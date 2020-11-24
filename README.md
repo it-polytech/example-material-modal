@@ -28,9 +28,9 @@ export class MainComponent implements OnInit {
   constructor( private matDialog: MatDialog ) {  }
 
   openModal() {
-    const dialogConfig = new MatDialogConfig();  ## permette il passaggio di informazioni al modal
-    dialogConfig.data = { name: "CiccioFranco"}; ## oggetto da passare al modal 
-    this.matDialog.open( DialogBodyComponent, dialogConfig); ## apertura modal
+    const dialogConfig = new MatDialogConfig();  // permette il passaggio di informazioni al modal
+    dialogConfig.data = { name: "CiccioFranco"}; // oggetto da passare al modal 
+    this.matDialog.open( DialogBodyComponent, dialogConfig); // apertura modal
   }
 
 ...
@@ -42,7 +42,7 @@ export class MainComponent implements OnInit {
 <h2 mat-dialog-title>This is a Dialog title</h2>
 <mat-dialog-content>
 
-<p> {{ data.name }} </p>  ## data.name è passato dal componente padre
+<p> {{ data.name }} </p>  // data.name è passato dal componente padre
 </mat-dialog-content>
 
 <mat-dialog-actions>
@@ -53,12 +53,12 @@ export class MainComponent implements OnInit {
 import { MatDialogRef , MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 ## Nel componente del modal fare l'inject nel costrttore di MatDialogRef e MAT_DIALOG_DATA
- constructor(  public dialogRef: MatDialogRef<DialogBodyComponent> , ##modal stesso
-               @Inject(MAT_DIALOG_DATA) public data: any ## oggetto passato dal padre
+ constructor(  public dialogRef: MatDialogRef<DialogBodyComponent> , //modal stesso
+               @Inject(MAT_DIALOG_DATA) public data: any // oggetto passato dal padre
              ) {}
 
 ## aggiungrere al componente il metodo di chiusura
-close() {
+close() {  // chiamato nell'html del compontente dall'evento (click)
     this.dialogRef.close("Thanks for using me!");
   }
 
